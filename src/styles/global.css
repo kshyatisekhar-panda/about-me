@@ -405,6 +405,188 @@ img {
   color: var(--color-text-muted);
 }
 
+/* ========== Experience ========== */
+.experience {
+  background: var(--color-bg);
+}
+
+.timeline {
+  position: relative;
+  padding-left: 32px;
+  margin-top: 48px;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 7px;
+  top: 8px;
+  bottom: 8px;
+  width: 2px;
+  background: var(--color-border);
+}
+
+.timeline-item {
+  position: relative;
+  padding-bottom: 40px;
+}
+
+.timeline-item:last-child {
+  padding-bottom: 0;
+}
+
+.timeline-marker {
+  position: absolute;
+  left: -32px;
+  top: 6px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--color-surface);
+  border: 2px solid var(--color-text-muted);
+}
+
+.timeline-current {
+  display: block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--color-accent);
+  margin: 2px auto;
+  animation: pulse-dot 2s ease-in-out infinite;
+}
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+.timeline-item:has(.timeline-current) .timeline-marker {
+  border-color: var(--color-accent);
+}
+
+.timeline-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.timeline-header h3 {
+  font-family: var(--font-heading);
+  font-size: 1.15rem;
+  font-weight: 600;
+}
+
+.badge-current {
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--color-green);
+  background: rgba(16, 185, 129, 0.12);
+  padding: 3px 10px;
+  border-radius: 20px;
+}
+
+.timeline-company {
+  font-size: 0.95rem;
+  color: var(--color-text);
+  margin-top: 4px;
+  font-weight: 500;
+}
+
+.timeline-group {
+  color: var(--color-text-muted);
+  font-weight: 400;
+}
+
+.timeline-location {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  margin-top: 2px;
+}
+
+.timeline-meta {
+  font-size: 0.82rem;
+  color: var(--color-text-muted);
+  margin-top: 4px;
+}
+
+.timeline-skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 10px;
+}
+
+.timeline-skills span {
+  font-size: 0.75rem;
+  padding: 3px 10px;
+  border-radius: 20px;
+  background: var(--color-surface);
+  color: var(--color-text-muted);
+  border: 1px solid var(--color-border);
+}
+
+.timeline-desc {
+  font-size: 0.88rem;
+  color: var(--color-text-muted);
+  margin-top: 10px;
+  line-height: 1.7;
+  max-width: 600px;
+}
+
+.subsection-heading {
+  font-family: var(--font-heading);
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  margin-top: 56px;
+  margin-bottom: 24px;
+}
+
+.timeline--compact .timeline-item {
+  padding-bottom: 28px;
+}
+
+.education {
+  margin-top: 56px;
+}
+
+.education-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: 24px;
+  max-width: 500px;
+}
+
+.education-icon {
+  font-size: 1.8rem;
+}
+
+.education-school {
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+.education-field {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  margin-top: 2px;
+}
+
+.education-meta {
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+  margin-top: 4px;
+  opacity: 0.7;
+}
+
 /* ========== Skills ========== */
 .skills {
   background: var(--color-bg-alt);
