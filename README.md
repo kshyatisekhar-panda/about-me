@@ -1,32 +1,28 @@
-# about-me — Personal Portfolio
+# about-me
 
-A personal portfolio website built with **Astro** and **TypeScript**, developed collaboratively with **Claude (AI)** as an experiment in AI-assisted development.
+My personal portfolio website built with Astro and TypeScript.
 
 ## Why This Project?
 
-I wanted to build a portfolio that represents who I am — a full stack developer, cricket player, traveler, and sports enthusiast based in Stockholm. But beyond the end result, the process mattered just as much.
+I wanted a portfolio that shows who I am. Not just as a developer, but as someone who plays cricket, travels, and loves sports. I'm based in Stockholm and have been writing code for over 7 years now.
 
-### AI-Assisted Development with Claude
+But this project was also an experiment. I built the entire thing using Claude Code (Anthropic's AI assistant) as a pair programmer. I wanted to see how it feels to work with AI on a real project, not just ask it to generate boilerplate.
 
-This entire project was built in collaboration with [Claude](https://claude.ai/) (Anthropic's AI assistant) using **Claude Code**. The goal was to explore:
+## Working with Claude
 
-- **How AI pair-programming actually works** in practice — prompting, iterating, reviewing suggestions, and steering decisions
-- **Whether AI tools can accelerate learning** a new framework from scratch
-- **The balance between AI-generated code and developer intent** — Claude writes the code, but the vision, design choices, and direction are mine
+The whole site came out of a conversation. I'd describe what I wanted, Claude would write the code, and then I'd review it, push back on things, and ask for changes. It was genuinely collaborative.
 
-This wasn't about generating a template and calling it done. It was a back-and-forth conversation — adjusting layouts, debating whether the design was "too much", fixing emoji rendering quirks, and iterating until it felt right.
+Some examples of how this played out: I told Claude the design felt "too much" and we stripped it back together. Emojis were rendering as raw unicode and we debugged that. I gave it my LinkedIn page source and it extracted my career history from the React SSR data.
 
-### Why Astro?
+It's not magic. You still need to know what you want and be willing to steer. But it's a surprisingly effective way to learn a new framework while building something real.
 
-Coming from a React background, I deliberately chose **not** to use React for this project. I wanted to learn something new, and Astro stood out for several reasons:
+## Why Astro?
 
-- **Zero JS by default** — Astro ships pure HTML/CSS unless you explicitly opt into client-side JavaScript. For a portfolio site, this means blazing fast performance out of the box
-- **Component-based without the overhead** — `.astro` files feel familiar (HTML + JS frontmatter) but without the virtual DOM, hydration costs, or bundle bloat
-- **TypeScript first-class** — strict mode from day one, no extra config
-- **Island architecture** — if I need interactivity later (say, a photo gallery lightbox), I can add React/Svelte/Vue components only where needed without rewriting the whole site
-- **Built for content sites** — portfolios, blogs, docs — exactly what Astro is optimized for
+I've been using React for years. I didn't want to reach for it again. I wanted to learn something new by actually building with it, not just reading docs.
 
-In short: Astro let me build a fast, modern site while learning a fundamentally different approach to web development than what I'm used to with React/Next.js.
+Astro made sense because it ships zero JavaScript by default. For a portfolio, that means the site is fast without any effort. The component model feels familiar if you come from React, but there's no virtual DOM or hydration overhead. TypeScript works out of the box in strict mode. And if I ever need interactivity (like a photo gallery lightbox), I can drop in React or Svelte components just for those parts without touching the rest.
+
+It's a different mental model from what I'm used to with Next.js, and that was the whole point.
 
 ## Tech Stack
 
@@ -37,55 +33,53 @@ In short: Astro let me build a fast, modern site while learning a fundamentally 
 | Styling     | Vanilla CSS (custom properties)   |
 | Fonts       | Inter + Space Grotesk (Google)    |
 | Deployment  | Static build (deploy anywhere)    |
-| Dev Tool    | Claude Code (AI pair-programming) |
+| Dev Tool    | Claude Code (AI pair programming) |
 
 ## Project Structure
 
 ```
 src/
   layouts/
-    BaseLayout.astro         # HTML shell, fonts, meta, scroll animations
+    BaseLayout.astro         Main HTML shell with fonts, meta tags, and scripts
   components/
-    Navbar.astro             # Fixed nav with mobile hamburger menu
-    Hero.astro               # Video background hero section
-    About.astro              # Bio + highlight stats
-    Skills.astro             # Tech skills in categorized cards
-    Projects.astro           # Featured GitHub projects
-    BeyondCode.astro         # Cricket, sports, travel, content creation
-    Contact.astro            # Email, LinkedIn, GitHub, YouTube, Instagram
-    TravelGallery.astro      # Photo gallery (ready, hidden until photos added)
-    Footer.astro             # Footer
+    Navbar.astro             Fixed nav with mobile hamburger menu
+    Hero.astro               Video background hero section
+    About.astro              Bio and highlight stats
+    Experience.astro         Career timeline with roles and education
+    Skills.astro             Tech skills in categorized cards
+    Projects.astro           Featured GitHub projects
+    BeyondCode.astro         Cricket, sports, travel, content creation
+    TravelGallery.astro      Photo gallery with travel photography
+    Contact.astro            Email, LinkedIn, GitHub, YouTube, Instagram
+    Footer.astro             Footer
   styles/
-    global.css               # Full design system — dark theme, responsive
+    global.css               Design system with dark theme and responsive layout
   pages/
-    index.astro              # Main page composing all components
+    index.astro              Main page that brings all components together
 public/
-  hero-bg.mp4               # Hero background video
-  favicon.svg               # KP favicon
+  hero-bg.mp4               Hero background video
+  travel/                    Optimized travel photos
+  favicon.svg               KP favicon
 ```
 
 ## Getting Started
 
 ```bash
-# Install dependencies
 npm install
-
-# Start dev server
 npm run dev
-
-# Build for production
 npm run build
-
-# Preview production build
 npm run preview
 ```
 
 ## What I Learned
 
-- Astro's mental model is refreshingly simple — it's closer to writing HTML than building a React app
-- AI pair-programming works best when you stay in the driver's seat — give clear direction, review everything, and don't just accept the first suggestion
-- Choosing an unfamiliar framework forces you to think about *why* you reach for certain tools, not just *how* to use them
-- A portfolio should evolve — this is a starting point, not a finished product
+Astro feels refreshingly simple. It's closer to writing HTML than building a React app, and that simplicity is a feature, not a limitation.
+
+AI pair programming works best when you stay in the driver's seat. Give clear direction, review everything, and don't just accept the first suggestion. The best results came from pushing back and iterating.
+
+Choosing an unfamiliar framework forces you to think about why you reach for certain tools, not just how to use them.
+
+This portfolio is a starting point. It will keep evolving.
 
 ## License
 
@@ -93,4 +87,4 @@ MIT
 
 ---
 
-Built with [Astro](https://astro.build) + [Claude Code](https://claude.ai/code)
+Built with [Astro](https://astro.build) and [Claude Code](https://claude.ai/code)
