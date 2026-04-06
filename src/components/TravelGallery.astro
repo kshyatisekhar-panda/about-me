@@ -1,0 +1,55 @@
+---
+/**
+ * Travel Photography Gallery
+ *
+ * To add your photos:
+ * 1. Place your images in /public/travel/ (e.g., travel-1.jpg, travel-2.jpg)
+ * 2. Update the `photos` array below with your actual images and captions
+ *
+ * Recommended: 800-1200px wide, optimized JPG/WebP for fast loading
+ */
+
+interface Photo {
+  src: string;
+  alt: string;
+  location: string;
+}
+
+const photos: Photo[] = [
+  // === ADD YOUR PHOTOS HERE ===
+  // Example:
+  // { src: '/travel/stockholm-sunset.jpg', alt: 'Sunset over Stockholm waterfront', location: 'Stockholm, Sweden' },
+  // { src: '/travel/norway-fjords.jpg', alt: 'Fjords of Norway', location: 'Norway' },
+];
+
+const hasPhotos = photos.length > 0;
+---
+
+<section class="section gallery" id="travel">
+  <div class="container">
+    <h2 class="section-title fade-in">Travel Photography</h2>
+    <p class="section-subtitle fade-in">Moments captured through my lens, from Scandinavia and beyond.</p>
+
+    {hasPhotos ? (
+      <div class="gallery-grid fade-in">
+        {photos.map((photo) => (
+          <div class="gallery-item">
+            <img src={photo.src} alt={photo.alt} loading="lazy" />
+            <div class="gallery-overlay">
+              <span class="gallery-location">{photo.location}</span>
+            </div>
+          </div>
+        ))}
+      </div>
+    ) : (
+      <div class="gallery-placeholder fade-in">
+        <div class="placeholder-icon">📷</div>
+        <h3>Photos coming soon</h3>
+        <p>
+          I'm curating my favorite travel shots. Check back soon — or follow my journey on
+          <a href="https://www.instagram.com/sportsandme_/" target="_blank" rel="noopener">Instagram</a>.
+        </p>
+      </div>
+    )}
+  </div>
+</section>

@@ -1,0 +1,53 @@
+---
+const links = [
+  {
+    icon: '✉',
+    label: 'Email',
+    value: 'kshyatisekhar.dev@gmail.com',
+    href: 'mailto:kshyatisekhar.dev@gmail.com',
+  },
+  {
+    icon: 'in',
+    label: 'LinkedIn',
+    value: 'Kshyatisekhar Panda',
+    href: 'https://www.linkedin.com/in/kshyatisekhar-panda-589973145/',
+  },
+  {
+    icon: '💻',
+    label: 'GitHub',
+    value: 'kshyatisekhar-panda',
+    href: 'https://github.com/kshyatisekhar-panda',
+  },
+  {
+    icon: '▶',
+    label: 'YouTube',
+    value: '@imhumanpanda_',
+    href: 'https://youtube.com/@imhumanpanda_',
+  },
+  {
+    icon: '📸',
+    label: 'Instagram (Sports)',
+    value: '@sportsandme_',
+    href: 'https://www.instagram.com/sportsandme_/',
+  },
+];
+---
+
+<section class="section contact" id="contact">
+  <div class="container">
+    <h2 class="section-title fade-in">Let's Connect</h2>
+    <p class="section-subtitle fade-in">
+      Whether you're a recruiter, a fellow developer, or just someone who wants to chat about cricket
+      — I'd love to hear from you.
+    </p>
+    <div class="contact-links fade-in">
+      {links.map((link) => (
+        <a href={link.href} target="_blank" rel="noopener" class="contact-card">
+          <div class="contact-icon">{link.icon}</div>
+          <span class="contact-label">{link.label}</span>
+          <span class="contact-value">{link.value}</span>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>

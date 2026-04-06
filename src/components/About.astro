@@ -1,0 +1,46 @@
+---
+const highlights = [
+  { number: '7+', label: 'Years Experience' },
+  { number: '18+', label: 'Open Source Projects' },
+  { number: '***', label: 'Arctic Code Vault Contributor' },
+  { number: 'GCP', label: 'Cloud Certification (In Progress)' },
+];
+---
+
+<section class="section about" id="about">
+  <div class="container">
+    <h2 class="section-title fade-in">About Me</h2>
+    <div class="about-grid">
+      <div class="about-text fade-in">
+        <p class="about-intro">
+          I'm a <strong>Full Stack Developer</strong> with 7+ years of experience building modern web
+          applications. I love turning ideas into elegant, performant digital experiences.
+        </p>
+        <p>
+          Currently based in Stockholm, I work across the entire stack — from crafting pixel-perfect
+          frontends with <strong>React</strong> and <strong>TypeScript</strong>, to designing scalable
+          backends with <strong>Node.js</strong> and cloud-native architectures on <strong>GCP</strong>
+          and <strong>AWS</strong>.
+        </p>
+        <p>
+          Beyond code, I'm a passionate <strong>cricket player</strong>, an avid <strong>traveler</strong>,
+          and a <strong>sports enthusiast</strong>. Whether it's chasing a leather ball on the field or
+          exploring a new city, I bring the same energy and curiosity to everything I do.
+        </p>
+        <p>
+          I'm currently diving deeper into <strong>AI/LLM integration</strong>,
+          <strong>Progressive Web Apps</strong>, and preparing for my
+          <strong>Google Cloud Professional Developer</strong> certification.
+        </p>
+      </div>
+      <div class="about-highlights fade-in">
+        {highlights.map((h) => (
+          <div class="highlight-card">
+            <span class="highlight-number">{h.number}</span>
+            <span class="highlight-label">{h.label}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>

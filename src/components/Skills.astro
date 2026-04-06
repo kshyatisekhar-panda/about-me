@@ -1,0 +1,53 @@
+---
+const categories = [
+  {
+    icon: '</>',
+    title: 'Frontend',
+    skills: ['React.js', 'TypeScript', 'JavaScript (ES6+)', 'Next.js', 'HTML5 / CSS3 / SCSS', 'Progressive Web Apps'],
+  },
+  {
+    icon: '⚙',
+    title: 'Backend',
+    skills: ['Node.js', 'Express.js', 'REST & GraphQL APIs', 'WebSocket / Socket.IO', 'Core Java', 'Webhook / Long Polling'],
+  },
+  {
+    icon: '🗃',
+    title: 'Database',
+    skills: ['MongoDB', 'PostgreSQL', 'OracleDB', 'SQL'],
+  },
+  {
+    icon: '☁',
+    title: 'Cloud & DevOps',
+    skills: ['Google Cloud Platform', 'AWS', 'Kubernetes & Docker', 'Jenkins CI/CD', 'Grafana', 'Turborepo Monorepo'],
+  },
+  {
+    icon: '🌱',
+    title: 'Currently Exploring',
+    skills: ['AI / LLM Integration', 'Next.js App Router', 'PWA with Wakelock API', 'Sports Analytics'],
+  },
+  {
+    icon: '🔧',
+    title: 'Tools',
+    skills: ['Git & GitHub', 'Swagger / Postman', 'VS Code', 'Figma'],
+  },
+];
+---
+
+<section class="section skills" id="skills">
+  <div class="container">
+    <h2 class="section-title fade-in">Skills &amp; Technologies</h2>
+    <div class="skills-grid">
+      {categories.map((cat) => (
+        <div class="skill-category fade-in">
+          <div class="skill-icon">{cat.icon}</div>
+          <h3>{cat.title}</h3>
+          <ul>
+            {cat.skills.map((s) => (
+              <li>{s}</li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
