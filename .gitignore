@@ -22,3 +22,10 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+
+# original media files (optimized versions in public/)
+originals/
+*.dng
+*.RAW-*
+*.MP.jpg
+view-source_*.html
