@@ -1,0 +1,150 @@
+---
+const roles = [
+  {
+    title: 'Senior Analyst - Software Development',
+    company: 'Gateway Digital Sweden AB',
+    group: 'Gateway Group of Companies',
+    location: 'Stockholm, Sweden',
+    type: 'Full-time · On-site',
+    period: 'Sep 2024 - Present',
+    current: true,
+    skills: ['Agile Methodologies', 'Kubernetes', 'TypeScript', 'React', 'Node.js'],
+  },
+  {
+    title: 'Analyst - Software Development',
+    company: 'Gateway Digital Sweden AB',
+    group: 'Gateway Group of Companies',
+    location: 'Stockholm, Sweden',
+    type: 'Full-time',
+    period: 'Aug 2022 - Sep 2024',
+    current: false,
+    skills: ['Express.js', 'GitHub', 'React', 'TypeScript'],
+  },
+  {
+    title: 'Analyst - Software Development',
+    company: 'Gateway Group of Companies',
+    location: 'Ahmedabad, India',
+    type: 'Full-time',
+    period: 'Feb 2021 - Aug 2022',
+    current: false,
+    skills: ['MongoDB', 'Node.js', 'JavaScript'],
+  },
+  {
+    title: 'Senior Software Engineer',
+    company: 'Gateway Group of Companies',
+    location: 'Ahmedabad, India',
+    type: 'Full-time',
+    period: 'Feb 2021',
+    current: false,
+    skills: [],
+  },
+  {
+    title: 'Software Engineer',
+    company: 'Gateway Group of Companies',
+    location: 'Ahmedabad, India',
+    type: 'Full-time',
+    period: 'Aug 2018 - Feb 2021',
+    current: false,
+    skills: ['Angular 4', 'Angular 5', 'JavaScript'],
+  },
+  {
+    title: 'Project Trainee',
+    company: 'Gateway Group of Companies',
+    location: 'Ahmedabad, India',
+    type: 'Full-time',
+    period: 'Jan 2018 - Aug 2018',
+    current: false,
+    skills: ['GitLab', 'ASP.NET'],
+  },
+];
+
+const earlyExperience = [
+  {
+    title: 'Summer Trainee',
+    company: 'Integrated Test Range, DRDO',
+    period: 'Jun 2017',
+    description: "Gained overview of Missile Testing Flows and built an 'Online Mission Data Management System' at the Central Data Processing Division, Defence Research and Development Organisation, India.",
+  },
+  {
+    title: 'Student Intern',
+    company: 'Birla Tyre Limited',
+    location: 'Balasore, India',
+    period: 'May 2017',
+    description: "Studied the Tyre Production System end-to-end. Worked with the Electronic Data Processing team on network setup, troubleshooting, and runtime challenges.",
+  },
+];
+
+const education = {
+  school: 'Centurion University of Technology and Management',
+  degree: 'B.Tech, Computer Science Engineering',
+  location: 'Bhubaneswar, India',
+  period: '2014 - 2018',
+};
+---
+
+<section class="section experience" id="experience">
+  <div class="container">
+    <h2 class="section-title fade-in">Experience</h2>
+    <p class="section-subtitle fade-in">8+ years across India and Sweden — from trainee to senior developer.</p>
+
+    <div class="timeline fade-in">
+      {roles.map((role) => (
+        <div class="timeline-item">
+          <div class="timeline-marker">
+            {role.current && <span class="timeline-current"></span>}
+          </div>
+          <div class="timeline-content">
+            <div class="timeline-header">
+              <h3>{role.title}</h3>
+              {role.current && <span class="badge-current">Current</span>}
+            </div>
+            <p class="timeline-company">
+              {role.company}
+              {role.group && <span class="timeline-group"> &middot; {role.group}</span>}
+            </p>
+            <p class="timeline-meta">
+              {role.period} &middot; {role.type}
+              {role.location && <> &middot; {role.location}</>}
+            </p>
+            {role.skills.length > 0 && (
+              <div class="timeline-skills">
+                {role.skills.map((s) => (
+                  <span>{s}</span>
+                ))}
+              </div>
+            )}
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <h3 class="subsection-heading fade-in">Early Career</h3>
+    <div class="timeline timeline--compact fade-in">
+      {earlyExperience.map((exp) => (
+        <div class="timeline-item">
+          <div class="timeline-marker"></div>
+          <div class="timeline-content">
+            <div class="timeline-header">
+              <h3>{exp.title}</h3>
+            </div>
+            <p class="timeline-company">{exp.company}</p>
+            <p class="timeline-meta">{exp.period}</p>
+            <p class="timeline-desc">{exp.description}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <div class="education fade-in">
+      <h3 class="subsection-heading">Education</h3>
+      <div class="education-card">
+        <div class="education-icon">🎓</div>
+        <div>
+          <p class="education-school">{education.school}</p>
+          <p class="education-field">{education.degree}</p>
+          <p class="education-meta">{education.location} &middot; {education.period}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
