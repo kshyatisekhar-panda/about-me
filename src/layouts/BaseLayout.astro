@@ -21,6 +21,15 @@ const { title, description = 'Full Stack Developer based in Stockholm, Sweden. 7
       rel="stylesheet"
     />
     <title>{title}</title>
+    <script is:inline>
+      // Apply saved theme immediately to prevent flash
+      (function() {
+        const saved = localStorage.getItem('theme');
+        if (saved === 'light' || (!saved && window.matchMedia('(prefers-color-scheme: light)').matches)) {
+          document.documentElement.classList.add('light');
+        }
+      })();
+    </script>
   </head>
   <body>
     <slot />
@@ -62,6 +71,13 @@ const { title, description = 'Full Stack Developer based in Stockholm, Sweden. 7
       );
 
       document.querySelectorAll('.fade-in').forEach((el) => observer.observe(el));
+
+      // Theme toggle
+      const themeToggle = document.getElementById('themeToggle');
+      themeToggle?.addEventListener('click', () => {
+        const isLight = document.documentElement.classList.toggle('light');
+        localStorage.setItem('theme', isLight ? 'light' : 'dark');
+      });
     </script>
   </body>
 </html>
