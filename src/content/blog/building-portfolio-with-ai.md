@@ -42,9 +42,9 @@ I wanted my real career history on the site, not placeholder text. But LinkedIn 
 
 So I saved the page source from my browser and gave it to Claude. The file was 1.3MB, two lines of heavily escaped React SSR data. Not exactly readable.
 
-Claude searched through the data using pattern matching. It found my job titles, company names, and education buried inside nested React component trees. Things like `"children":["Senior Analyst Programmer at Gateway Group of Companies"]` hidden among thousands of lines of tracking data and UI component definitions.
+Claude searched through the data using pattern matching. It found my job titles, company names, and education buried inside nested React component trees. Things like `"children":["Senior Analyst Programmer at ..."]` hidden among thousands of lines of tracking data and UI component definitions.
 
-From that mess it extracted my complete career timeline: six roles at Gateway Group from Project Trainee to Senior Analyst, plus my internships at DRDO and Birla Tyre, and my B.Tech from Centurion University. All real, all accurate.
+From that mess it extracted my complete career timeline: six roles across India and Sweden, from trainee to senior developer, plus early internships and my university education. All real, all accurate.
 
 That was genuinely impressive. I wouldn't have had the patience to parse that file manually.
 
@@ -72,7 +72,7 @@ It also respects the system preference on first visit. If your OS is set to ligh
 
 ## What Didn't Work
 
-**First drafts are generic.** Claude's initial text for my experience descriptions was made up. "Developed enterprise-grade software solutions" for Thomson Reuters. I had to call that out and provide my real career data. AI can't know what you actually did at your job.
+**First drafts are generic.** Claude's initial text for my experience descriptions was made up. Generic lines like "Developed enterprise-grade software solutions" that could apply to anyone. I had to call that out and provide my real career data. AI can't know what you actually did at your job.
 
 **Unicode in Astro templates.** This one caught us both off guard. It's the kind of framework-specific gotcha that AI doesn't always know about until it fails.
 
