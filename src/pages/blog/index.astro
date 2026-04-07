@@ -24,8 +24,11 @@ const posts = (await getCollection('blog'))
 
       <div class="posts-list">
         {posts.map((post) => (
-          <a href={`/blog/${post.id}`} class="post-card">
-            <div class="post-date">{new Date(post.data.date).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' })}</div>
+          <a href={post.data.devtoUrl || `/blog/${post.id}`} target={post.data.devtoUrl ? '_blank' : '_self'} rel={post.data.devtoUrl ? 'noopener' : undefined} class="post-card">
+            <div class="post-card-top">
+              <div class="post-date">{new Date(post.data.date).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' })}</div>
+              {post.data.devtoUrl && <span class="devto-badge">dev.to</span>}
+            </div>
             <h2 class="post-title">{post.data.title}</h2>
             <p class="post-desc">{post.data.description}</p>
             <div class="post-tags">
@@ -100,6 +103,25 @@ const posts = (await getCollection('blog'))
     transition: var(--transition);
     text-decoration: none;
     color: inherit;
+  }
+
+  .post-card-top {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 8px;
+  }
+
+  .devto-badge {
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #fff;
+    background: #08090a;
+    padding: 3px 8px;
+    border-radius: 4px;
+    border: 1px solid rgba(255,255,255,0.1);
   }
 
   .post-card:hover {
