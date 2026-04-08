@@ -24,7 +24,7 @@ const posts = (await getCollection('blog'))
 
       <div class="posts-list">
         {posts.map((post) => (
-          <a href={post.data.devtoUrl || `/blog/${post.id}`} target={post.data.devtoUrl ? '_blank' : '_self'} rel={post.data.devtoUrl ? 'noopener' : undefined} class="post-card">
+          <a href={`/blog/${post.id}`} class="post-card">
             <div class="post-card-top">
               <div class="post-date">{new Date(post.data.date).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' })}</div>
               {post.data.devtoUrl && <span class="devto-badge">dev.to</span>}

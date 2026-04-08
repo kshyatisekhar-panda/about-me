@@ -17,20 +17,48 @@ const formattedDate = new Date(post.data.date).toLocaleDateString('en-GB', {
   month: 'long',
   year: 'numeric',
 });
+
+// Fetch article HTML from dev.to API if devtoUrl exists
+let devtoHtml: string | null = null;
+if (post.data.devtoUrl) {
+  try {
+    // Extract slug from dev.to URL
+    const urlParts = post.data.devtoUrl.split('/');
+    const username = urlParts[3];
+    const articleSlug = urlParts[4];
+    const res = await fetch(`https://dev.to/api/articles/${username}/${articleSlug}`);
+    if (res.ok) {
+      const article = await res.json();
+      devtoHtml = article.body_html;
+    }
+  } catch (e) {
+    // Fallback to local content if fetch fails
+  }
+}
 ---
 
 <BaseLayout title={`${post.data.title} — Kshyatisekhar Panda`} description={post.data.description}>
   <nav class="post-nav">
     <div class="post-nav-inner">
       <a href="/" class="nav-logo">KP<span class="accent">.</span></a>
-      <a href="/blog" class="btn btn-outline btn-sm">All Posts</a>
+      <div class="post-nav-actions">
+        {post.data.devtoUrl && (
+          <a href={post.data.devtoUrl} target="_blank" rel="noopener" class="btn btn-outline btn-sm devto-link">
+            View on dev.to
+          </a>
+        )}
+        <a href="/blog" class="btn btn-outline btn-sm">All Posts</a>
+      </div>
     </div>
   </nav>
 
   <article class="post-page">
     <div class="post-container">
       <header class="post-header">
-        <div class="post-meta">{formattedDate}</div>
+        <div class="post-meta">
+          {formattedDate}
+          {post.data.devtoUrl && <span class="post-source">Published on dev.to</span>}
+        </div>
         <h1 class="post-heading">{post.data.title}</h1>
         <p class="post-subtitle">{post.data.description}</p>
         <div class="post-tags">
@@ -41,10 +69,19 @@ const formattedDate = new Date(post.data.date).toLocaleDateString('en-GB', {
       </header>
 
       <div class="post-content">
-        <Content />
+        {devtoHtml ? (
+          <Fragment set:html={devtoHtml} />
+        ) : (
+          <Content />
+        )}
       </div>
 
       <footer class="post-footer">
+        {post.data.devtoUrl && (
+          <a href={post.data.devtoUrl} target="_blank" rel="noopener" class="btn btn-primary">
+            Read and comment on dev.to
+          </a>
+        )}
         <a href="/blog" class="btn btn-outline">Read more posts</a>
       </footer>
     </div>
@@ -72,6 +109,11 @@ const formattedDate = new Date(post.data.date).toLocaleDateString('en-GB', {
     justify-content: space-between;
   }
 
+  .post-nav-actions {
+    display: flex;
+    gap: 10px;
+  }
+
   .btn-sm {
     padding: 8px 18px;
     font-size: 0.85rem;
@@ -97,6 +139,18 @@ const formattedDate = new Date(post.data.date).toLocaleDateString('en-GB', {
     font-size: 0.85rem;
     color: var(--color-text-muted);
     margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .post-source {
+    font-size: 0.75rem;
+    color: #fff;
+    background: #08090a;
+    padding: 2px 8px;
+    border-radius: 4px;
+    border: 1px solid rgba(255,255,255,0.1);
   }
 
   .post-heading {
@@ -141,6 +195,7 @@ const formattedDate = new Date(post.data.date).toLocaleDateString('en-GB', {
     font-weight: 600;
     margin-top: 48px;
     margin-bottom: 16px;
+    color: var(--color-text);
   }
 
   .post-content :global(h3) {
@@ -149,6 +204,7 @@ const formattedDate = new Date(post.data.date).toLocaleDateString('en-GB', {
     font-weight: 600;
     margin-top: 36px;
     margin-bottom: 12px;
+    color: var(--color-text);
   }
 
   .post-content :global(p) {
@@ -217,9 +273,39 @@ const formattedDate = new Date(post.data.date).toLocaleDateString('en-GB', {
     color: var(--color-text-muted);
   }
 
+  .post-content :global(table) {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 24px;
+  }
+
+  .post-content :global(th),
+  .post-content :global(td) {
+    padding: 10px 14px;
+    border: 1px solid var(--color-border);
+    text-align: left;
+    font-size: 0.9rem;
+    color: var(--color-text-muted);
+  }
+
+  .post-content :global(th) {
+    background: var(--color-surface);
+    color: var(--color-text);
+    font-weight: 600;
+  }
+
   .post-footer {
     margin-top: 64px;
     padding-top: 32px;
     border-top: 1px solid var(--color-border);
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  @media (max-width: 768px) {
+    .post-nav-actions .devto-link {
+      display: none;
+    }
   }
 </style>
